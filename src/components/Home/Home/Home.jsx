@@ -1,13 +1,15 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
+import Navbar from '../../Navbar/Navbar';
 import Carosole from '../carosole/Carosole';
-import Footer from '../Footer/Footer';
+import Footer from '../../Footer/Footer';
+import Gallery from '../gallery/Gallery';
 
 const Home = () => {
     return (
-        <div>
+        <div className=''>
             <Navbar/>
             <Carosole/>
+            <Gallery/>
             <Footer/>
         </div>
     );

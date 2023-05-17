@@ -1,0 +1,50 @@
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .gallery-item {
+    background-position: center;
+    background-size: cover;
+    border-radius: 8px;
+  }
+  
+  .tall-wide {
+    flex-basis: 70%;
+    height: 500px;
+    background-image: url('https://example.com/tall-wide.jpg');
+  }
+  
+  .small-square {
+    flex-basis: 30%;
+    height: 200px;
+    background-image: url('https://example.com/small-square.jpg');
+  }
+  
+  .wide-rect {
+    flex-basis: 40%;
+    height: 300px;
+    background-image: url('https://example.com/wide-rect.jpg');
+  }
+  
+  .small-rect {
+    flex-basis: 20%;
+    height: 200px;
+    background-image: url('https://example.com/small-rect.jpg');
+  }
+  
+  .tall-square {
+    flex-basis: 60%;
+    height: 500px;
+    background-image: url('https://example.com/tall-square.jpg');
+  }
+  
+  .wide-square {
+    flex-basis: 100%;
+    height: 500px;
+    background-image: url('https://example.com/wide-square.jpg');
+  }
+  
