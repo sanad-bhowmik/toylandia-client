@@ -7,17 +7,27 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Home from './components/Home/Home.jsx';
+import Blog from './components/Blog/Blog.jsx';
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Home />,
   },
+  {
+    path: '/blog',
+    element: <Blog />
+  },
+  {
+    path: '*',
+    element: <ErrorPage />
+  }
 ]);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )

@@ -11,12 +11,12 @@ const Navbar = () => {
                 </div>
                 <div className="flex-none text-lg font-semibold">
                     <ul className="menu menu-horizontal px-1">
-                        <li><Link>Home</Link></li>
+                        <li><Link to='/'>Home</Link></li>
                         <li tabIndex={0}>
                             <Link>All Toys</Link>
                             <Link>My Toys</Link>
                             <Link>Add A Toys</Link>
-                        <Link>Blog</Link>
+                            <Link to='/blog'>Blog</Link>
                         </li>
                     </ul>
                 </div>
