@@ -1,11 +1,65 @@
-import React from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import { Link } from 'react-router-dom';
 import useTitle from '../../../hooks/useTitle';
+import { AuthContext } from '../../providers/AuthProviders';
+import { AuthErrorCodes, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
+import { Toaster, toast } from 'react-hot-toast';
 
 const Login = () => {
   useTitle('login')
+  const { signIn } = useContext(AuthContext)
+  const emailRef = useRef();
+  const auth = getAuth(app)
+  const googleProvider = new GoogleAuthProvider();
+  const [user, setUser] = useState(null);
+
+  // googlesign start
+  const handleGoogleSignIn = (event) => {
+    event.preventDefault();
+    // console.log('hello from google');
+    signInWithPopup(auth, googleProvider)
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        toast.success('Login successful! Welcome to our family');
+        setUser(loggedUser)
+        // navigate(from, { replace: true })
+      })
+      .catch(error => {
+        toast.error('error', error.message);
+      })
+  }
+  // googlesign end
+
+  // email Login
+  const handleLogin = event => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        toast.success('Login successful! Welcome to our family');
+        setUser(loggedUser);
+        form.reset();
+        // navigate(from, { replace: true })
+      })
+      .catch(error => {
+        console.log(error);
+        if (error.code === AuthErrorCodes.WRONG_PASSWORD) {
+          toast.error('Invalid email or password.');
+        } else {
+          toast.error('Invalid email or password!');
+        }
+      });
+  };
+  // email Login
   return (
     <>
       <Navbar />
@@ -13,7 +67,7 @@ const Login = () => {
         <div className="w-1/2 relative">
           {/* Login form */}
           <div className="flex justify-center items-center h-full">
-            <form className="w-3/4 p-8 bg-white shadow-md rounded-lg relative bg-gradient-to-br from-blue-200 to-red-100">
+            <form onSubmit={handleLogin} className="w-3/4 p-8 bg-white shadow-md rounded-lg relative bg-gradient-to-br from-blue-200 to-red-100">
               <h2 className="text-2xl font-bold mb-6">Login</h2>
               <div className="mb-4">
                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
@@ -21,6 +75,7 @@ const Login = () => {
                 </label>
                 <input
                   type="email"
+                  name='email'
                   id="email"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                   placeholder="Enter your email"
@@ -32,6 +87,7 @@ const Login = () => {
                 </label>
                 <input
                   type="password"
+                  name='password'
                   id="password"
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                   placeholder="Enter your password"
@@ -45,7 +101,7 @@ const Login = () => {
               </button>
               <div className="flex items-center justify-center mt-4">
                 <span className="text-sm text-gray-600">or</span>
-                <button className="ml-2 p-2 bg-white border rounded-full">
+                <button onClick={handleGoogleSignIn} className="ml-2 p-2 bg-white border rounded-full">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                     alt="Google Logo"
@@ -73,6 +129,7 @@ const Login = () => {
         </div>
       </div>
       <Footer />
+      <Toaster />
     </>
   );
 };
