@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import star from '../../../assets/star.png'
+import { Link } from 'react-router-dom';
 const Tabsection = () => {
     const [toys, setToys] = useState([]);
 
@@ -31,7 +32,7 @@ const Tabsection = () => {
                                         <input type="radio" name="rating-1" className="mask mask-star bg-yellow-600" />
                                     </div></p>
                                     <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">View Details</button>
+                                        <Link to={`/toy/${filteredToy._id}`} className="btn btn-primary">View Details</Link>
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +53,7 @@ const Tabsection = () => {
                                         <input type="radio" name="rating-1" className="mask mask-star bg-yellow-600" />
                                     </div></p>
                                     <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">View Details</button>
+                                        <Link to={`/toy/${filteredToy._id}`} className="btn btn-primary">View Details</Link>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +72,7 @@ const Tabsection = () => {
                                         <input type="radio" name="rating-1" className="mask mask-star bg-yellow-600" />
                                     </div></p>
                                     <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">View Details</button>
+                                        <Link to={`/toy/${filteredToy._id}`} className="btn btn-primary">View Details</Link>
                                     </div>
                                 </div>
                             </div>

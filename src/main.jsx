@@ -9,6 +9,7 @@ import {
 import Home from './components/Home/Home/Home.jsx';
 import Blog from './components/Blog/Blog.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
+import ToyDetails from './components/ToyDetails/ToyDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,10 +21,14 @@ const router = createBrowserRouter([
     element: <Blog />
   },
   {
+    path: '/toy/:id',
+    element: <ToyDetails />
+  },
+  {
     path: '*',
     element: <ErrorPage />
   },
-  
+
 ]);
 
 

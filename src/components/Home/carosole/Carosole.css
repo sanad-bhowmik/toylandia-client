@@ -5,13 +5,12 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
   }
   
   .carousel {
     height: 100vh;
     position: relative;
-    /* background-image: url('https://img.pikbest.com/backgrounds/20191017/volleyball-league-sports-background-picture_1905182.jpg!bwr800'); */
+    background-image: url('https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-63770.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
