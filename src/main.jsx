@@ -13,6 +13,7 @@ import ToyDetails from './components/ToyDetails/ToyDetails.jsx';
 import Login from './components/pages/Login/Login.jsx';
 import Registration from './components/pages/Registration/Registration.jsx';
 import AuthProviders from './components/providers/AuthProviders.jsx';
+import AllToys from './components/AllToys/AllToys.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: '/toy/:id',
     element: <ToyDetails />
+  },
+  {
+    path: '/alltoys',
+    element: <AllToys/>
   },
   {
     path: '*',
