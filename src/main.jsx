@@ -10,11 +10,21 @@ import Home from './components/Home/Home/Home.jsx';
 import Blog from './components/Blog/Blog.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import ToyDetails from './components/ToyDetails/ToyDetails.jsx';
+import Login from './components/pages/Login/Login.jsx';
+import Registration from './components/pages/Registration/Registration.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: '/registration',
+    element: <Registration />
   },
   {
     path: '/blog',
