@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import useTitle from '../../hooks/useTitle';
 
 const ToyDetails = () => {
+    useTitle('ToyDetails')
     const [toy, setToy] = useState(null);
     const { id } = useParams();
 
