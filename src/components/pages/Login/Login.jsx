@@ -9,56 +9,58 @@ import app from '../../firebase/firebase.config';
 import { Toaster, toast } from 'react-hot-toast';
 
 const Login = () => {
-  useTitle('login')
-  const { signIn } = useContext(AuthContext)
-  const emailRef = useRef();
-  const auth = getAuth(app)
-  const googleProvider = new GoogleAuthProvider();
-  const [user, setUser] = useState(null);
+  // Set the title of the page to 'login'
+useTitle('login')
 
-  // googlesign start
-  const handleGoogleSignIn = (event) => {
-    event.preventDefault();
-    // console.log('hello from google');
-    signInWithPopup(auth, googleProvider)
-      .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        toast.success('Login successful! Welcome to our family');
-        setUser(loggedUser)
-        // navigate(from, { replace: true })
-      })
-      .catch(error => {
-        toast.error('error', error.message);
-      })
-  }
-  // googlesign end
+// Import necessary dependencies and components
+const { signIn } = useContext(AuthContext)  // AuthContext is a context for authentication
+const emailRef = useRef();  // Reference to the email input field
+const auth = getAuth(app)  // Initialize the Firebase authentication service using the app instance
+const googleProvider = new GoogleAuthProvider();  // Create a GoogleAuthProvider instance
+const [user, setUser] = useState(null);  // State variable to hold the logged-in user
 
-  // email Login
-  const handleLogin = event => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+// Handle Google sign-in
+const handleGoogleSignIn = (event) => {
+  event.preventDefault();
+  signInWithPopup(auth, googleProvider)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      toast.success('Login successful! Welcome to our family');
+      setUser(loggedUser)
+      // navigate(from, { replace: true })
+    })
+    .catch(error => {
+      toast.error('error', error.message);
+    })
+}
 
-    signIn(email, password)
-      .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-        toast.success('Login successful! Welcome to our family');
-        setUser(loggedUser);
-        form.reset();
-        // navigate(from, { replace: true })
-      })
-      .catch(error => {
-        console.log(error);
-        if (error.code === AuthErrorCodes.WRONG_PASSWORD) {
-          toast.error('Invalid email or password.');
-        } else {
-          toast.error('Invalid email or password!');
-        }
-      });
-  };
+// Handle email login
+const handleLogin = event => {
+  event.preventDefault();
+  const form = event.target;
+  const email = form.email.value;
+  const password = form.password.value;
+
+  signIn(email, password)
+    .then(result => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+      toast.success('Login successful! Welcome to our family');
+      setUser(loggedUser);
+      form.reset();
+      // navigate(from, { replace: true })
+    })
+    .catch(error => {
+      console.log(error);
+      if (error.code === AuthErrorCodes.WRONG_PASSWORD) {
+        toast.error('Invalid email or password.');
+      } else {
+        toast.error('Invalid email or password!');
+      }
+    });
+};
+
   // email Login
   return (
     <>
