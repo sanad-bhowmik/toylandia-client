@@ -2,8 +2,10 @@ import React from 'react';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 
 const Login = () => {
+  useTitle('login')
   return (
     <>
       <Navbar />

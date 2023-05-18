@@ -3,8 +3,10 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import qus from '../../assets/question-mark.png';
 import ans from '../../assets/answer.png'
+import useTitle from '../../hooks/useTitle';
 
 const Blog = () => {
+    useTitle('Blog')
     return (
         <>
             <Navbar />

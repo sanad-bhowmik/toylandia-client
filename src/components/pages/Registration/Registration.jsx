@@ -2,8 +2,10 @@ import React from 'react';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 
 const Registration = () => {
+  useTitle('registration')
   return (
     <>
       <Navbar />
@@ -11,7 +13,7 @@ const Registration = () => {
         <div className="w-1/2 bg-gray-300">
           {/* GIF image */}
           <img
-            src="https://financeadvisoras.com/assets/images/secure-login.gif"
+            src="https://www.adyen.com/dam/jcr:cd33be63-f77c-4fd5-80be-4c902c8ae5fa/animated-header-risk-managment.gif"
             alt="GIF"
             className="h-screen object-cover"
           />
@@ -22,7 +24,7 @@ const Registration = () => {
             <form className="w-3/4 p-8 bg-white shadow-md rounded-lg relative bg-gradient-to-br from-green-200 to-blue-100">
               <h2 className="text-2xl font-bold mb-6">Registration</h2>
               <div className="mb-4">
-                <label  className="block mb-2 text-sm font-medium text-gray-700">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Name
                 </label>
                 <input
@@ -44,7 +46,7 @@ const Registration = () => {
                 />
               </div>
               <div className="mb-4">
-                <label  className="block mb-2 text-sm font-medium text-gray-700">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Password
                 </label>
                 <input
@@ -55,7 +57,7 @@ const Registration = () => {
                 />
               </div>
               <div className="mb-4">
-                <label  htmlFor="photourl" className="block mb-2 text-sm font-medium text-gray-700">
+                <label htmlFor="photourl" className="block mb-2 text-sm font-medium text-gray-700">
                   Photo URL
                 </label>
                 <input
