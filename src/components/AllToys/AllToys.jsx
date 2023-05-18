@@ -11,10 +11,10 @@ const AllToys = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:5000/toys');
+            const response = await fetch('http://localhost:5000/toys?limit=20'); // Add the limit parameter here
             const data = await response.json();
             setToys(data);
-            setDisplayedToys(data.slice(0, 20));
+            setDisplayedToys(data);
         };
         fetchData();
     }, []);
