@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-
+import star from '../../../assets/star.png'
 const Tabsection = () => {
     const [toys, setToys] = useState([]);
 
@@ -20,16 +20,18 @@ const Tabsection = () => {
                 </TabList>
 
                 <TabPanel>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-4 ml-[10%]">
                         {toys.filter(toy => toy.sub_categoriesId === "1").map(filteredToy => (
                             <div key={filteredToy._id} className="card w-96 glass">
                                 <figure><img src={filteredToy.img} alt={filteredToy.toy_name} /></figure>
                                 <div className="card-body">
                                     <h2 className="card-title">{filteredToy.toy_name}</h2>
-                                    <p>Price: {filteredToy.price}</p>
-                                    <p>Rating: {filteredToy.rating}</p>
+                                    <p>Price: ${filteredToy.price}</p>
+                                    <p>Rating: {filteredToy.rating}<div className="rating">
+                                        <input type="radio" name="rating-1" className="mask mask-star bg-yellow-600" />
+                                    </div></p>
                                     <div className="card-actions justify-end">
-                                        <button className="btn btn-primary">Learn now!</button>
+                                        <button className="btn btn-primary">View Details</button>
                                     </div>
                                 </div>
                             </div>
@@ -39,24 +41,42 @@ const Tabsection = () => {
 
 
                 <TabPanel>
-                    {toys.filter(toy => toy.sub_categoriesId === "2").map(filteredToy => (
-                        <div key={filteredToy._id}>
-                            <h2>{filteredToy.toy_name}</h2>
-                            <img src={filteredToy.img} alt={filteredToy.toy_name} />
-                            <p>Price: {filteredToy.price}</p>
-                            <p>Rating: {filteredToy.rating}</p>
-                        </div>
-                    ))}
+                    <div className="grid grid-cols-2 gap-4 ml-[10%]">
+                        {toys.filter(toy => toy.sub_categoriesId === "2").map(filteredToy => (
+                            <div key={filteredToy._id} className="card w-96 glass">
+                                <figure><img src={filteredToy.img} alt={filteredToy.toy_name} /></figure>
+                                <div className="card-body">
+                                    <h2 className="card-title">{filteredToy.toy_name}</h2>
+                                    <p>Price: ${filteredToy.price}</p>
+                                    <p>Rating: {filteredToy.rating}<div className="rating">
+                                        <input type="radio" name="rating-1" className="mask mask-star bg-yellow-600" />
+                                    </div></p>
+                                    <div className="card-actions justify-end">
+                                        <button className="btn btn-primary">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </TabPanel>
                 <TabPanel>
-                    {toys.filter(toy => toy.sub_categoriesId === "3").map(filteredToy => (
-                        <div key={filteredToy._id}>
-                            <h2>{filteredToy.toy_name}</h2>
-                            <img src={filteredToy.img} alt={filteredToy.toy_name} />
-                            <p>Price: {filteredToy.price}</p>
-                            <p>Rating: {filteredToy.rating}</p>
-                        </div>
-                    ))}
+                    <div className="grid grid-cols-2 gap-4 ml-[10%]">
+                        {toys.filter(toy => toy.sub_categoriesId === "3").map(filteredToy => (
+                            <div key={filteredToy._id} className="card w-96 glass">
+                                <figure><img src={filteredToy.img} alt={filteredToy.toy_name} /></figure>
+                                <div className="card-body">
+                                    <h2 className="card-title">{filteredToy.toy_name}</h2>
+                                    <p>Price: ${filteredToy.price}</p>
+                                    <p>Rating: {filteredToy.rating}<div className="rating">
+                                        <input type="radio" name="rating-1" className="mask mask-star bg-yellow-600" />
+                                    </div></p>
+                                    <div className="card-actions justify-end">
+                                        <button className="btn btn-primary">View Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </TabPanel>
             </Tabs>
         </div>
