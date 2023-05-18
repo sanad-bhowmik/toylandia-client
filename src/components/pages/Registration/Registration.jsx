@@ -149,6 +149,7 @@ const Registration = () => {
         </div>
       </div>
       <Footer />
+      <Toaster/>
     </>
   );
 };
