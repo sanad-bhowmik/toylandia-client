@@ -3,11 +3,14 @@ import useTitle from '../../hooks/useTitle';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import './AllToys.css'
+import ToyDetailsModal from '../ToyDetailsModal/ToyDetailsModal';
 const AllToys = () => {
     useTitle('AllToys');
     const [toys, setToys] = useState([]);
     const [displayedToys, setDisplayedToys] = useState([]);
     const [search, setSearch] = useState('');
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedToy, setSelectedToy] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,6 +21,11 @@ const AllToys = () => {
         };
         fetchData();
     }, []);
+
+    const handleViewDetails = (toy) => {
+        setSelectedToy(toy);
+        setModalOpen(true);
+    };
 
     const handleSearch = (e) => {
         setSearch(e.target.value);
@@ -65,14 +73,14 @@ const AllToys = () => {
                             <p className="text-purple-700">Sub-category: {toy.sub_categories}</p>
                             <p className="text-green-700">Available Quantity: {toy.available_quantity}</p>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary text-xl text-white">View Details</button>
+                                <button className="btn btn-primary text-xl text-white" onClick={() => handleViewDetails(toy)}>View Details</button>
                             </div>
                         </div>
-
                     </div>
                 ))}
             </div>
             <Footer />
+            {modalOpen && <ToyDetailsModal toy={selectedToy} closeModal={() => setModalOpen(false)} />}
         </div>
     );
 };
