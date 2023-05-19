@@ -3,6 +3,8 @@ import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import { AuthContext } from '../providers/AuthProviders';
 import useTitle from '../../hooks/useTitle';
+import { Toaster, toast } from 'react-hot-toast';
+
 
 const AddToys = () => {
     useTitle('Alltoys')
@@ -26,6 +28,7 @@ const AddToys = () => {
         const quantity = form.quantity.value;
         const description = form.description.value;
         form.reset();
+        toast.success('Wow!!! You Added new toy');
     
         const toys = {
             toy_name: name,
@@ -54,6 +57,7 @@ const AddToys = () => {
     return (
         <div>
             <Navbar />
+            <Toaster/>
             <h1 className="text-5xl font-serif text-center font-bold mb-10 mt-10">Add your Toy</h1>
             <div className="flex container mx-auto px-4 py-8 ">
                 <div className="mr-8">

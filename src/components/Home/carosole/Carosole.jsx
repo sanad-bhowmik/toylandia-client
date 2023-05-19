@@ -24,7 +24,7 @@ const Carosole = () => {
                     <h1 className='text-5xl font-bold pb-4 '>"Play is the highest form of research."<br /><span className='text-purple-600'>-Albert Einstein</span></h1>
                 </div>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="btn btn-circle">❮</a>
+                    <a href="#slide3" className="btn btn-circle">❮</a>
                     <a href="#slide2" className="btn btn-circle">❯</a>
                 </div>
             </div>
