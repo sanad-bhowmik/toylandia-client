@@ -39,10 +39,10 @@ const Navbar = () => {
                         <ul className="menu menu-horizontal px-1">
                             <li>
                                 <Link to="/">Home</Link>
+                                <Link to='/alltoys'>All Toys</Link>
                             </li>
                             {user && (
                                 <li tabIndex={0}>
-                                    <Link to='/alltoys'>All Toys</Link>
                                     <Link to='/mytoys'>My Toys</Link>
                                     <Link to='/addtoys'>Add A Toys</Link>
                                     <Link to="/blog">Blog</Link>

@@ -46,7 +46,7 @@ const handleLogin = event => {
     .then(result => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      toast.success('Login successful! Welcome to our family');
+      toast.success('Login successful! Welcome Back');
       setUser(loggedUser);
       form.reset();
       // navigate(from, { replace: true })
