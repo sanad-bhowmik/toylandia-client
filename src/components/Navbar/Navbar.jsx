@@ -42,8 +42,8 @@ const Navbar = () => {
                         {user && (
                             <li tabIndex={0}>
                                 <Link to='/alltoys'>All Toys</Link>
-                                <Link>My Toys</Link>
-                                <Link>Add A Toys</Link>
+                                <Link to='/mytoys'>My Toys</Link>
+                                <Link to='/addtoys'>Add A Toys</Link>
                                 <Link to="/blog">Blog</Link>
                             </li>
                         )}

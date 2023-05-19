@@ -147,6 +147,39 @@ const Review = () => {
                         </div>
 
                         {/* card-04 */}
+                        <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+                            <div class="px-4 py-5">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0"><img src="https://media.istockphoto.com/id/1331330324/vector/female-avatar-icon.jpg?s=612x612&w=0&k=20&c=-DFhryMhHkcdJ01b9On8PEOGb4ZvvGRgJ1xOQtkZZjM=" alt="" /></div>
+                                    <div class="ml-3">
+                                        <h3 class="text-xl font-medium text-gray-800">Emily Davis</h3>
+                                        <span class="text-gray-600">May 18, 2023</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <p class="text-gray-700">"Fantastic customer service! They went above and beyond to help me. Thank you so much!"</p>
+                                </div>
+                                <div class="mt-6 flex">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-yellow-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-yellow-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-yellow-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-gray-300">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-4 w-4 text-gray-300">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span class="ml-2 text-gray-600">4.0</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </Marquee>
