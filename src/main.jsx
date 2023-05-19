@@ -16,6 +16,7 @@ import AuthProviders from './components/providers/AuthProviders.jsx';
 import AllToys from './components/AllToys/AllToys.jsx';
 import Mytoys from './components/Mytoys/Mytoys.jsx';
 import AddToys from './components/AddToys/AddToys.jsx';
+import UpdateToy from './components/UpdateToy/UpdateToy.jsx';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
   {
     path: '/addtoys',
     element: <AddToys />
+  },
+  {
+    path: '/updateToy/:id',
+    element: <UpdateToy />,
+    loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
   },
   {
     path: '*',

@@ -3,11 +3,16 @@ import Navbar from '../Navbar/Navbar';
 import useTitle from '../../hooks/useTitle';
 import { AuthContext } from '../providers/AuthProviders';
 import Footer from '../Footer/Footer';
+import Swal from 'sweetalert2';
+import { toast, Toaster } from 'react-hot-toast';
+import UpdateToyModal from './UpdateToyModal';
 
 const Mytoys = () => {
     useTitle('MyToys');
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [selectedToy, setSelectedToy] = useState(null);
 
     // Check if the user is not null before accessing the email property
     const userEmail = user ? user.email : '';
@@ -21,6 +26,41 @@ const Mytoys = () => {
                 .then(data => setToys(data));
         }
     }, [user]); // Add user as a dependency to useEffect
+
+    const handleDelete = _id => {
+        console.log(_id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // console.log('delete confirm');
+                fetch(`http://localhost:5000/toys/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your toy has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+    const handleUpdate = (toy) => {
+        setSelectedToy(toy);
+        setShowUpdateModal(true);
+    };
 
     return (
         <div>
@@ -65,10 +105,13 @@ const Mytoys = () => {
                                                 <td className="px-4 py-2">{toy.description}</td>
                                                 <td className="px-4 py-2">
                                                     <div className="flex space-x-2">
-                                                        <button className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded">
+                                                        <button onClick={() => handleDelete(toy._id)} className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded">
                                                             Delete
                                                         </button>
-                                                        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded">
+                                                        <button
+                                                            onClick={() => handleUpdate(toy)}
+                                                            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded"
+                                                        >
                                                             Edit
                                                         </button>
                                                     </div>
@@ -83,14 +126,32 @@ const Mytoys = () => {
                 </div>
             </div>
             <Footer />
+            {showUpdateModal && (
+                <UpdateToyModal
+                    toy={selectedToy}
+                    onUpdate={(updatedToy) => {
+                        fetch(`http://localhost:5000/toys/${updatedToy._id}`, {
+                            method: 'PUT',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify(updatedToy),
+                        })
+                            .then((res) => res.json())
+                            .then((data) => {
+                                setToys(
+                                    toys.map((toy) => toy._id === updatedToy._id ? updatedToy : toy)
+                                )
+                                setShowUpdateModal(false); // Close the modal
+                                toast.success('Toy updated successfully!'); // Show success toast
+                            })
+                    }}
+                    onClose={() => setShowUpdateModal(false)}
+                />
+            )}
+            <Toaster />
         </div>
     );
 };
 
 export default Mytoys;
-
-{/* <tbody className="bg-white divide-y divide-gray-200">
-                                        {toys.map((toy) => (
-                                            <ToyRow key={toy.id} toy={toy} />
-                                        ))}
-                                    </tbody> */}
