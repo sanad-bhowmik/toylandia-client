@@ -8,6 +8,8 @@ import useTitle from '../../../hooks/useTitle';
 import Marquee from "react-fast-marquee";
 import Review from '../Review/Review';
 import  { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Home = () => {
     useTitle('Home')
@@ -15,6 +17,10 @@ const Home = () => {
 
     useEffect(() => {
         fetchToys();
+    }, []);
+
+    useEffect(() => {
+        AOS.init();
     }, []);
 
     const fetchToys = () => {
@@ -30,7 +36,7 @@ const Home = () => {
             <div className='mt-10 mb-24'>
                 <h1 className='text-6xl mb-16 text-center font-serif underline'>Our Distributer</h1>
                 <Marquee>
-                    <div className='flex gap-6'>
+                    <div className='flex gap-6'data-aos="fade-left">
                         <img className='h-40' src="https://www.middlesexresourcenet.org/rnMiddlesex/cache/file/5CC6402E-5056-A830-8C55DEBA7FDD3544.jpg" alt="" />
                         <img className='h-40' src="https://learnandplay.co.in/wp-content/uploads/2022/10/cropped-Learn-and-Play.png" alt="" />
                         <img  className='h-40'src="https://scontent.fdac135-1.fna.fbcdn.net/v/t39.30808-6/326249267_5989454254411389_8433691899516997657_n.png?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHdhNXH7HUUshYKG1vbBNenrJaOjQ5LTjKslo6NDktOMuM9bx722L84ltgwoCO026PFZ0jioBS5VXhL0ZGiWCBW&_nc_ohc=bIqiuJilmEUAX8m8JH8&_nc_ht=scontent.fdac135-1.fna&oh=00_AfCq-3FWFBY0ucbhcmcNUUDRkPag_IWK5awtUut7Z86VHw&oe=646BEF3F" alt="" />
@@ -39,6 +45,7 @@ const Home = () => {
                         <img className='h-40' src="https://upload.wikimedia.org/wikipedia/en/7/71/Wwo-logo-bldg-2010-cmyk-h1.jpg" alt="" />
                         <img className='h-40' src="https://i.pinimg.com/originals/e1/eb/ea/e1ebead3d5ce9dbe8240d628732021b3.png" alt="" />
                         <img className='h-40' src="https://images-platform.99static.com/OHcO3S0wICgFNpqJ6c5-DdLpIyY=/0x0:960x960/500x500/top/smart/99designs-contests-attachments/87/87373/attachment_87373152" alt="" />
+                        <img className='h-40' src="https://cdn.dribbble.com/users/1700393/screenshots/15803802/media/fbdfc074387bbef4d1f7944e96cd40c0.png?compress=1&resize=400x300" alt="" />
                     </div>
                 </Marquee>
             </div>

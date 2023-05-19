@@ -1,12 +1,20 @@
 import Marquee from "react-fast-marquee";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
 
 const Review = () => {
+    useEffect(() => {
+        AOS.init();
+    }, []);
+
     return (
         <section className="mb-24 mt-24">
             <div>
                 <h1 className="text-6xl font-serif underline mb-16 text-center">Reviews</h1>
                 <Marquee>
-                    <div className="flex gap-6">
+                    <div className="flex gap-6"  data-aos="fade-left">
                         {/* card-01  */}
                         <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
                             <div class="px-4 py-5">

@@ -1,9 +1,16 @@
-import React from 'react';
-import './Carosole.css'
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import './Carosole.css';
+
+
 const Carosole = () => {
+    useEffect(() => {
+        AOS.init();
+    }, []);
     return (
         <div className="text-black carousel w-full h-[100px]">
-            <div id="slide1" className="carousel-item relative w-full">
+            <div id="slide1" className="carousel-item relative w-full" data-aos="fade-up">
                 <div className='ml-[300px] mt-[98px]'>
                     <div className="flex">
                         <div>
@@ -28,7 +35,7 @@ const Carosole = () => {
                     <a href="#slide2" className="btn btn-circle">❯</a>
                 </div>
             </div>
-            <div id="slide2" className="carousel-item relative w-full">
+            <div id="slide2" className="carousel-item relative w-full "data-aos="fade-up">
                 <div className='ml-[300px] mt-[98px]'>
                     <div className="flex">
                         <div>
@@ -53,7 +60,7 @@ const Carosole = () => {
                     <a href="#slide3" className="btn btn-circle">❯</a>
                 </div>
             </div>
-            <div id="slide3" className="carousel-item relative w-full">
+            <div id="slide3" className="carousel-item relative w-full "data-aos="fade-up">
                 <div className='ml-[300px] mt-[98px]'>
                     <div className="flex">
                         <div>

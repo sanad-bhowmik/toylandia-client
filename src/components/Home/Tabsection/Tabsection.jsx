@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import star from '../../../assets/star.png'
 import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
 const Tabsection = () => {
     const [toys, setToys] = useState([]);
 
@@ -10,9 +14,11 @@ const Tabsection = () => {
             .then((response) => response.json())
             .then((data) => setToys(data));
     }, []);
-
+    useEffect(() => {
+        AOS.init();
+    }, []);
     return (
-        <div className='text-2xl container mx-auto mt-14 mb-10'>
+        <div className='text-2xl container mx-auto mt-14 mb-10' data-aos="fade-up">
             <Tabs>
                 <TabList style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px', borderBottom: '1px solid #ccc' }}>
                     <Tab><button className='text-2xl btn btn-info'>Math Toys</button></Tab>
