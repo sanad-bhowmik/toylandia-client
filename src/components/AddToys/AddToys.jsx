@@ -10,24 +10,28 @@ const AddToys = () => {
 
     const handleAddToys = event => {
         event.preventDefault();
-
+    
         const form = event.target;
         const photo = form.photo.value;
         const name = form.name.value;
         const sellerName = user?.displayName;
         const email = user?.email;
-        const category = form.category.value;
-        const price = form.price.value; // Initialize price with the value from the form
-        const rating = form.rating.value; // Initialize rating with the value from the form
-        const quantity = form.quantity.value; // Initialize quantity with the value from the form
+        const categoryValue = form.category.value;
+        
+        // Extract the subcategory ID and name from the selected value
+        const [subCategoryId, subCategoryName] = categoryValue.split('_');
+    
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const quantity = form.quantity.value;
         const description = form.description.value;
         form.reset();
-
+    
         const toys = {
-
             toy_name: name,
             img: photo,
-            sub_categories: category,
+            sub_categoriesId: subCategoryId, // Add the subcategory ID
+            sub_categories: subCategoryName, // Use the extracted subcategory name
             price: price,
             rating: rating,
             available_quantity: quantity,
@@ -36,7 +40,7 @@ const AddToys = () => {
             seller_email: email
         }
         console.log(toys);
-
+    
         fetch('http://localhost:5000/toys',{
             method: 'POST',
             headers: {
@@ -101,9 +105,9 @@ const AddToys = () => {
                                 required
                             >
                                 <option value="" disabled selected>Select an option</option>
-                                <option value="math toy">Math Toy</option>
-                                <option value="engineering toy">Engineering Toy</option>
-                                <option value="science toy">Science Toy</option>
+                                <option value="1_math toy">Math Toy</option>
+                                <option value="2_engineering toy">Engineering Toy</option>
+                                <option value="3_science toy">Science Toy</option>
                             </select>
                         </div>
                         <div className="mb-4">

@@ -7,9 +7,22 @@ import Tabsection from '../Tabsection/Tabsection';
 import useTitle from '../../../hooks/useTitle';
 import Marquee from "react-fast-marquee";
 import Review from '../Review/Review';
+import  { useState, useEffect } from 'react';
 
 const Home = () => {
     useTitle('Home')
+    const [toys, setToys] = useState([]);
+
+    useEffect(() => {
+        fetchToys();
+    }, []);
+
+    const fetchToys = () => {
+        fetch('http://localhost:5000/toys')
+            .then((response) => response.json())
+            .then((data) => setToys(data));
+    };
+
     return (
         <div className=''>
             <Navbar />
