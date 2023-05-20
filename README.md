@@ -2,6 +2,8 @@
 
 
 ## Website Name: Toylandia
+## website Link: https://toylandia-d1d02.web.app/
+## netlify Link: https://nimble-crostata-530bf7.netlify.app/
 
 ## Features:
 

@@ -8,6 +8,8 @@ import { AuthErrorCodes, GoogleAuthProvider, getAuth, signInWithPopup } from 'fi
 import app from '../../firebase/firebase.config';
 import { Toaster, toast } from 'react-hot-toast';
 import Tabsection from '../../Home/Tabsection/Tabsection';
+import open from '../../../assets/openeye.png'
+import close from '../../../assets/closeeye.png'
 
 const Login = () => {
   // Set the title of the page to 'login'
@@ -16,9 +18,11 @@ const Login = () => {
   // Import necessary dependencies and components
   const { signIn } = useContext(AuthContext);
   const emailRef = useRef();
+  const passwordRef = useRef();
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -33,7 +37,6 @@ const Login = () => {
           color: '#fff',
         },
       });
-
     }
   }, []);
 
@@ -54,8 +57,8 @@ const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
 
     signIn(email, password)
       .then((result) => {
@@ -64,9 +67,8 @@ const Login = () => {
         toast.success('Login successful! Welcome Back');
         setUser(loggedUser);
         form.reset();
-        navigate(from, { replace: true })
+        navigate(from, { replace: true });
         toast.success('Login successful! Welcome to our family');
-
       })
       .catch((error) => {
         console.log(error);
@@ -78,7 +80,10 @@ const Login = () => {
       });
   };
 
-  // email Login
+  const toggleShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
   return (
     <>
       <Navbar />
@@ -86,7 +91,10 @@ const Login = () => {
         <div className="w-1/2 relative">
           {/* Login form */}
           <div className="flex justify-center items-center h-full">
-            <form onSubmit={handleLogin} className="w-3/4 p-8 bg-white shadow-md rounded-lg relative bg-gradient-to-br from-blue-200 to-red-100">
+            <form
+              onSubmit={handleLogin}
+              className="w-3/4 p-8 bg-white shadow-md rounded-lg relative bg-gradient-to-br from-blue-200 to-red-100"
+            >
               <h2 className="text-2xl font-bold mb-6">Login</h2>
               <div className="mb-4">
                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
@@ -94,8 +102,9 @@ const Login = () => {
                 </label>
                 <input
                   type="email"
-                  name='email'
+                  name="email"
                   id="email"
+                  ref={emailRef}
                   className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
                   placeholder="Enter your email"
                 />
@@ -104,13 +113,28 @@ const Login = () => {
                 <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-700">
                   Password
                 </label>
-                <input
-                  type="password"
-                  name='password'
-                  id="password"
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
-                  placeholder="Enter your password"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    id="password"
+                    ref={passwordRef}
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"
+                    placeholder="Enter your password"
+                  />
+                  <button
+                    type="button"
+                    className="absolute top-1/2 right-2 transform -translate-y-1/2 focus:outline-none"
+                    onClick={toggleShowPassword}
+                  >
+                    {showPassword ? (
+                      <img src={close} className='h-6' alt="" />
+                    ) : (
+                      <img src={open} className='h-6' alt="" />
+
+                    )}
+                  </button>
+                </div>
               </div>
               <button
                 type="submit"
