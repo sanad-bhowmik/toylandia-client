@@ -13,19 +13,24 @@ const Mytoys = () => {
     const [toys, setToys] = useState([]);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
     const [selectedToy, setSelectedToy] = useState(null);
+    const [sortOrder, setSortOrder] = useState(1)
 
     // Check if the user is not null before accessing the email property
     const userEmail = user ? user.email : '';
     const url = `https://toylandia-server-sanad-bhowmik.vercel.app/toys?seller_email=${userEmail}`;
 
     useEffect(() => {
-        // Only fetch data if the user is not null
         if (user) {
-            fetch(url)
+            fetch(`${url}&sort=${sortOrder}`)
                 .then(res => res.json())
                 .then(data => setToys(data));
         }
-    }, [user]); // Add user as a dependency to useEffect
+    }, [user, sortOrder]); // Add sortOrder as a dependency to useEffect
+
+    const handleSortChange = (e) => {
+        setSortOrder(e.target.value);
+    };
+
 
     const handleDelete = _id => {
         console.log(_id);
@@ -49,7 +54,7 @@ const Mytoys = () => {
                         if (data.deletedCount > 0) {
                             // Update the toys state by filtering out the deleted toy
                             setToys(toys.filter(toy => toy._id !== _id));
-    
+
                             Swal.fire(
                                 'Deleted!',
                                 'Your toy has been deleted.',
@@ -73,6 +78,19 @@ const Mytoys = () => {
             </div>
 
             <div className="p-4 container mx-auto">
+                <div className="flex justify-end mb-4">
+                    <label htmlFor="sort" className="mr-2">Sort by price:</label>
+                    <select
+                        name="sort"
+                        id="sort"
+                        value={sortOrder}
+                        onChange={handleSortChange}
+                        className="border border-gray-300 rounded p-2"
+                    >
+                        <option value="1">Ascending</option>
+                        <option value="-1">Descending</option>
+                    </select>
+                </div>
                 <div className="flex flex-col">
                     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
