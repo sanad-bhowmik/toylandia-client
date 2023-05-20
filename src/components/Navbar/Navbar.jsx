@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import app from '../firebase/firebase.config';
 import { AuthContext } from '../providers/AuthProviders';
 
-const auth = getAuth(app)
+const auth = getAuth(app);
 
 const Navbar = () => {
     const [photoURL, setPhotoURL] = useState('');
     const [displayName, setDisplayName] = useState('');
-    const { user, setUser } = useContext(AuthContext) // Add setUser here
+    const { user, setUser } = useContext(AuthContext); // Add setUser here
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -28,23 +28,24 @@ const Navbar = () => {
             unsubscribe();
         };
     }, []);
+
     return (
         <>
-            <div className="navbar bg-lime-100 ">
-                <div className='container mx-auto'>
+            <div className="navbar bg-lime-100">
+                <div className="container mx-auto flex items-center justify-between px-4">
                     <div className="flex-1">
                         <img className="h-10" src={logo} alt="" />
                     </div>
                     <div className="flex-none text-lg font-semibold">
-                        <ul className="menu menu-horizontal px-1">
+                        <ul className="menu menu-horizontal space-x-4">
                             <li>
                                 <Link to="/">Home</Link>
-                                <Link to='/alltoys'>All Toys</Link>
+                                <Link to="/alltoys">All Toys</Link>
                             </li>
                             {user && (
-                                <li tabIndex={0}>
-                                    <Link to='/mytoys'>My Toys</Link>
-                                    <Link to='/addtoys'>Add A Toys</Link>
+                                <li>
+                                    <Link to="/mytoys">My Toys</Link>
+                                    <Link to="/addtoys">Add A Toys</Link>
                                     <Link to="/blog">Blog</Link>
                                 </li>
                             )}
