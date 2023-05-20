@@ -73,70 +73,65 @@ const AllToys = () => {
                 </button>
             </div>
             <div className="container mx-auto mb-32">
-                <table className="min-w-full divide-y divide-gray-200">
-                    <thead>
-                        <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Image
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Toy Name
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Price
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Sub-category
-                            </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Available Quantity
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {displayedToys.map((toy) => (
-                            <tr key={toy._id}>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <img
-                                        className="h-32 w-32 rounded-full"
-                                        src={toy.img}
-                                        alt={toy.toy_name}
-                                    />
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-gray-900">{toy.toy_name}</div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-red-700">${toy.price}</div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-purple-700">{toy.sub_categories}</div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-green-700">{toy.available_quantity}</div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <button
-                                        className="btn btn-primary text-xl text-white"
-                                        onClick={() => handleViewDetails(toy)}
-                                    >
-                                        View Details
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-
-                </table>
-                {limit < toys.length && (
-                    <button
-                        className="btn btn-primary text-xl text-white mt-4"
-                        onClick={handleShowAll}
-                    >
-                        Show All
-                    </button>
-                )}
-            </div>
+  <table className="min-w-full divide-y divide-gray-200">
+    <thead>
+      <tr>
+        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Image
+        </th>
+        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Toy Name
+        </th>
+        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Price
+        </th>
+        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Sub-category
+        </th>
+        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Available Quantity
+        </th>
+        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          Seller Name
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {displayedToys.map((toy) => (
+        <tr key={toy._id}>
+          <td className="px-6 py-4 whitespace-nowrap">
+            <img className="h-32 w-32 rounded-full" src={toy.img} alt={toy.toy_name} />
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap">
+            <div className="text-sm text-gray-900">{toy.toy_name}</div>
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap">
+            <div className="text-sm text-red-700">${toy.price}</div>
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap">
+            <div className="text-sm text-purple-700">{toy.sub_categories}</div>
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap">
+            <div className="text-sm text-green-700">{toy.available_quantity}</div>
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap">
+            <div className="text-sm text-blue-700">{toy.seller_name}</div>
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap">
+            <button className="btn btn-primary text-xl text-white" onClick={() => handleViewDetails(toy)}>
+              View Details
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  {limit < toys.length && (
+    <button className="btn btn-primary text-xl text-white mt-4" onClick={handleShowAll}>
+      Show All
+    </button>
+  )}
+</div>
             <Footer />
         </div>
 

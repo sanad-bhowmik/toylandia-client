@@ -42,18 +42,18 @@ const Carosole = () => {
       </div>
       <div id="slide2" className="carousel-item relative w-full" data-aos="fade-up">
         <div className="mx-auto md:ml-[300px] md:mt-[98px]">
-          <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row">
             <div className="mb-6 md:mb-0">
-              <div className="p-4 shadow-lg bg-gradient-to-r from-slate-300 to-slate-100 h-[136px] md:h-[456px] w-[300px] md:w-[400px] rounded-xl"></div>
-              <div className="p-4 mt-[30px] shadow-lg bg-purple-100 h-[456px] md:w-[400px] rounded-xl">
+              <div className="p-4 shadow-lg bg-gradient-to-r from-slate-300 to-slate-100 h-[96px] md:h-[156px] w-[200px] md:w-[300px] rounded-xl"></div>
+              <div className="p-4 mt-[20px] shadow-lg bg-purple-100 h-[386px] md:w-[300px] rounded-xl">
                 <img className="pl-[16px]  mt-[50px] h-[90%] pb-10 rounded-lg " src="https://coimages.sciencemuseumgroup.org.uk/images/8/24/medium_1913_0532__0002_.jpg" alt="" />
               </div>
             </div>
-            <div className="ml-0 md:ml-[30px]">
-              <div className="p-4 mt-[30px] shadow-lg bg-purple-100 h-[456px] md:w-[400px] rounded-xl ">
+            <div className="ml-0 md:ml-[20px]">
+              <div className="p-4 mt-[20px] shadow-lg bg-purple-100 h-[366px] md:w-[300px] rounded-xl ">
                 <img className="pl-[16px]  mt-[50px] h-[90%] pb-10 rounded-lg " src="https://sharpbrainseducation.com/wp-content/uploads/2023/01/abacusa2.jpg" alt="" />
               </div>
-              <div className="p-4 mt-[30px] shadow-lg bg-gradient-to-r from-slate-300 to-slate-100 h-[136px] md:h-[456px] w-[300px] md:w-[400px] rounded-xl "></div>
+              <div className="p-4 mt-[20px] shadow-lg bg-gradient-to-r from-slate-300 to-slate-100 h-[96px] md:h-[156px] w-[200px] md:w-[300px] rounded-xl "></div>
             </div>
           </div>
         </div>
@@ -71,18 +71,18 @@ const Carosole = () => {
       </div>
       <div id="slide3" className="carousel-item relative w-full" data-aos="fade-up">
         <div className="mx-auto md:ml-[300px] md:mt-[98px]">
-          <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row">
             <div className="mb-6 md:mb-0">
-              <div className="p-4 shadow-lg bg-gradient-to-r from-slate-300 to-slate-100 h-[136px] md:h-[456px] w-[300px] md:w-[400px] rounded-xl"></div>
-              <div className="p-4 mt-[30px] shadow-lg bg-purple-100 h-[456px] md:w-[400px] rounded-xl">
+              <div className="p-4 shadow-lg bg-gradient-to-r from-slate-300 to-slate-100 h-[96px] md:h-[156px] w-[200px] md:w-[300px] rounded-xl"></div>
+              <div className="p-4 mt-[20px] shadow-lg bg-purple-100 h-[386px] md:w-[300px] rounded-xl">
                 <img className="pl-[16px]  mt-[50px] h-[90%] pb-10 rounded-lg " src="https://coimages.sciencemuseumgroup.org.uk/images/8/24/medium_1913_0532__0002_.jpg" alt="" />
               </div>
             </div>
-            <div className="ml-0 md:ml-[30px]">
-              <div className="p-4 mt-[30px] shadow-lg bg-purple-100 h-[456px] md:w-[400px] rounded-xl ">
+            <div className="ml-0 md:ml-[20px]">
+              <div className="p-4 mt-[20px] shadow-lg bg-purple-100 h-[366px] md:w-[300px] rounded-xl ">
                 <img className="pl-[16px]  mt-[50px] h-[90%] pb-10 rounded-lg " src="https://sharpbrainseducation.com/wp-content/uploads/2023/01/abacusa2.jpg" alt="" />
               </div>
-              <div className="p-4 mt-[30px] shadow-lg bg-gradient-to-r from-slate-300 to-slate-100 h-[136px] md:h-[456px] w-[300px] md:w-[400px] rounded-xl "></div>
+              <div className="p-4 mt-[20px] shadow-lg bg-gradient-to-r from-slate-300 to-slate-100 h-[96px] md:h-[156px] w-[200px] md:w-[300px] rounded-xl "></div>
             </div>
           </div>
         </div>

@@ -23,19 +23,20 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || '/';
-  if (from !== '/') {
-    useEffect(() => {
+
+  useEffect(() => {
+    if (from !== '/') {
       toast('You have to log in first to view details', {
-        icon: '🤨',
         style: {
           borderRadius: '10px',
           background: 'linear-gradient(to right, #ff00cc, #3333ff)',
           color: '#fff',
         },
       });
-      
-    }, []);
-  }
+
+    }
+  }, []);
+
   const handleGoogleSignIn = (event) => {
     event.preventDefault();
     signInWithPopup(auth, googleProvider)
