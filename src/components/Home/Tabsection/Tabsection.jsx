@@ -6,7 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
-const Tabsection = () => {
+const Tabsection = ({ user, loggedIn }) => {
     const [toys, setToys] = useState([]);
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const Tabsection = () => {
     useEffect(() => {
         AOS.init();
     }, []);
-    return (
+    return  (
         <div className='text-2xl container mx-auto mt-14 mb-10' data-aos="fade-up">
             <Tabs>
                 <TabList style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '30px', borderBottom: '1px solid #ccc' }}>
@@ -87,7 +87,7 @@ const Tabsection = () => {
                 </TabPanel>
             </Tabs>
         </div>
-    );
+    )  ;
 };
 
 export default Tabsection;

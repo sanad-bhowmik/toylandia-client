@@ -47,6 +47,9 @@ const Mytoys = () => {
                     .then(data => {
                         console.log(data);
                         if (data.deletedCount > 0) {
+                            // Update the toys state by filtering out the deleted toy
+                            setToys(toys.filter(toy => toy._id !== _id));
+    
                             Swal.fire(
                                 'Deleted!',
                                 'Your toy has been deleted.',
