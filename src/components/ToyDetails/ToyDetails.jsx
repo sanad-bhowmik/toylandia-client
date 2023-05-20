@@ -10,7 +10,7 @@ const ToyDetails = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch('http://localhost:5000/toys')
+        fetch('https://toylandia-server-sanad-bhowmik.vercel.app/toys')
             .then((response) => response.json())
             .then((data) => {
                 const foundToy = data.find((toy) => toy._id === id);

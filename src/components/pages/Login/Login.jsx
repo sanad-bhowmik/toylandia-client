@@ -52,6 +52,8 @@ const Login = () => {
         setUser(loggedUser);
         form.reset();
         navigate(from, { replace: true })
+        toast.success('Login successful! Welcome to our family');
+
       })
       .catch((error) => {
         console.log(error);
@@ -132,7 +134,6 @@ const Login = () => {
           />
         </div>
       </div>
-      <Tabsection user={user} loggedIn={user !== null} />
       <Footer />
       <Toaster />
     </>

@@ -24,7 +24,7 @@ const Home = () => {
     }, []);
 
     const fetchToys = () => {
-        fetch('http://localhost:5000/toys')
+        fetch('https://toylandia-server-sanad-bhowmik.vercel.app/toys')
             .then((response) => response.json())
             .then((data) => setToys(data));
     };

@@ -44,7 +44,7 @@ const AddToys = () => {
         }
         console.log(toys);
     
-        fetch('http://localhost:5000/toys',{
+        fetch('https://toylandia-server-sanad-bhowmik.vercel.app/toys',{
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

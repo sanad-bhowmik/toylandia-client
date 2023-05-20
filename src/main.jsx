@@ -55,7 +55,7 @@ const router = createBrowserRouter([
   {
     path: '/updateToy/:id',
     element: <UpdateToy />,
-    loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+    loader: ({ params }) => fetch(`https://toylandia-server-sanad-bhowmik.vercel.app/toys/${params.id}`)
   },
   {
     path: '*',

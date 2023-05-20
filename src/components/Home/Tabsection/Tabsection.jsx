@@ -10,7 +10,7 @@ const Tabsection = ({ user, loggedIn }) => {
     const [toys, setToys] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/toys')
+        fetch('https://toylandia-server-sanad-bhowmik.vercel.app/toys')
             .then((response) => response.json())
             .then((data) => setToys(data));
     }, []);

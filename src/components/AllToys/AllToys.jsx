@@ -19,7 +19,7 @@ const AllToys = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:5000/toys?limit=20'); // Add the limit parameter here
+            const response = await fetch('https://toylandia-server-sanad-bhowmik.vercel.app/toys?limit=20'); // Add the limit parameter here
             const data = await response.json();
             setToys(data);
             setDisplayedToys(data);
