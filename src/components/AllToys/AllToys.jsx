@@ -3,7 +3,9 @@ import useTitle from '../../hooks/useTitle';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import './AllToys.css'
-import ToyDetailsModal from '../ToyDetailsModal/ToyDetailsModal';
+import { useNavigate } from 'react-router-dom';
+
+
 const AllToys = () => {
     useTitle('AllToys');
     const [toys, setToys] = useState([]);
@@ -11,6 +13,9 @@ const AllToys = () => {
     const [search, setSearch] = useState('');
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedToy, setSelectedToy] = useState({});
+    const [limit, setLimit] = useState(20);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -20,11 +25,10 @@ const AllToys = () => {
             setDisplayedToys(data);
         };
         fetchData();
-    }, []);
+    }, [limit]);
 
     const handleViewDetails = (toy) => {
-        setSelectedToy(toy);
-        setModalOpen(true);
+        navigate(`/toy/${toy._id}`);
     };
 
     const handleSearch = (e) => {
@@ -37,7 +41,10 @@ const AllToys = () => {
 
     const filteredToys = toys.filter((toy) =>
         toy.toy_name.toLowerCase().includes(search.toLowerCase())
-    );
+    ); 
+     const handleShowAll = () => {
+        setLimit(toys.length);
+    };
 
     return (
         <div>
@@ -84,9 +91,6 @@ const AllToys = () => {
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Available Quantity
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                Seller Name
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -112,9 +116,6 @@ const AllToys = () => {
                                     <div className="text-sm text-green-700">{toy.available_quantity}</div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-gray-900">{toy.seller_name}</div>
-                                </td>
-                                <td className="px-6 py-4 whitespace-nowrap">
                                     <button
                                         className="btn btn-primary text-xl text-white"
                                         onClick={() => handleViewDetails(toy)}
@@ -127,9 +128,16 @@ const AllToys = () => {
                     </tbody>
 
                 </table>
+                {limit < toys.length && (
+                    <button
+                        className="btn btn-primary text-xl text-white mt-4"
+                        onClick={handleShowAll}
+                    >
+                        Show All
+                    </button>
+                )}
             </div>
             <Footer />
-            {modalOpen && <ToyDetailsModal toy={selectedToy} closeModal={() => setModalOpen(false)} />}
         </div>
 
     );

@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import useTitle from '../../hooks/useTitle';
 
 const ToyDetails = () => {
-    useTitle('ToyDetails')
+    useTitle('ToyDetails');
     const [toy, setToy] = useState(null);
     const { id } = useParams();
 
@@ -19,9 +19,11 @@ const ToyDetails = () => {
     }, [id]);
 
     if (!toy) {
-        return <div className="flex items-center justify-center h-screen">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
-        </div>;
+        return (
+            <div className="flex items-center justify-center h-screen">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-900"></div>
+            </div>
+        );
     }
 
     return (
@@ -31,7 +33,7 @@ const ToyDetails = () => {
                 <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl mx-auto text-center">
                         <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
-                            <span className=" animate-pulse bg-clip-text text-transparent bg-gradient-to-r from-black to-black">
+                            <span className="animate-pulse bg-clip-text text-transparent bg-gradient-to-r from-black to-black">
                                 {toy.toy_name}
                             </span>
                         </h1>
@@ -47,7 +49,7 @@ const ToyDetails = () => {
                                 Price:
                                 <div className="text-3xl">${toy.price}</div>
                             </button>
-                            <button className=" bg-gradient-to-r from-lime-200 to-green-200 text-black btn gap-2 text-3xl">
+                            <button className="bg-gradient-to-r from-lime-200 to-green-200 text-black btn gap-2 text-3xl">
                                 Rating:
                                 <div className="text-3xl">{toy.rating}</div>
                             </button>
@@ -56,6 +58,17 @@ const ToyDetails = () => {
                                 <div className="text-3xl">{toy.available_quantity}</div>
                             </button>
                         </div>
+                        <div className="mt-24">
+                            <h2 className="text-4xl font-bold text-black">Seller Information</h2>
+                            <div className="card card-side mt-6 bg-gradient-to-r from-blue-500 to-purple-500 shadow-xl">
+                                <div className="card-body">
+                                    <h2 className="text-center text-4xl font-serif font-bold text-white">{toy.seller_name}</h2>
+                                    <h2 className="text-center text-3xl text-white">{toy.seller_email}</h2>
+                                    <p className="text-lg text-white">{toy.description}</p>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>

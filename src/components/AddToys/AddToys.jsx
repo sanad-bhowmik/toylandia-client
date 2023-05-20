@@ -7,7 +7,7 @@ import { Toaster, toast } from 'react-hot-toast';
 
 
 const AddToys = () => {
-    useTitle('Alltoys')
+    useTitle('AddToys')
     const { user } = useContext(AuthContext);
 
     const handleAddToys = event => {
