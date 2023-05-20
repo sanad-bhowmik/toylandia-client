@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Navbar from '../../Navbar/Navbar';
 import Footer from '../../Footer/Footer';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { AuthContext } from '../../providers/AuthProviders';
 import { AuthErrorCodes, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 import { Toaster, toast } from 'react-hot-toast';
-import Tabsection from '../../Home/Tabsection/Tabsection'; // Import Tabsection component
+import Tabsection from '../../Home/Tabsection/Tabsection';
 
 const Login = () => {
   // Set the title of the page to 'login'
@@ -23,7 +23,19 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || '/';
-
+  if (from !== '/') {
+    useEffect(() => {
+      toast('You have to log in first to view details', {
+        icon: '🤨',
+        style: {
+          borderRadius: '10px',
+          background: 'linear-gradient(to right, #ff00cc, #3333ff)',
+          color: '#fff',
+        },
+      });
+      
+    }, []);
+  }
   const handleGoogleSignIn = (event) => {
     event.preventDefault();
     signInWithPopup(auth, googleProvider)
